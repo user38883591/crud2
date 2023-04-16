@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book</title>
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-md">
+
+        </div>
+      </nav>
+
+
+      <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Book</h2>
+                <br>
+
+                <form action="/insert" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control  mt-2" placeholder="author" name="author" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" class="form-control  mt-2" placeholder="publication_date" name="publication_date" required>
+
+                    </div>
+                    <div>
+                        <input type="text" class="form-control  mt-2" placeholder="genre" name="genre" required>
+                    </div>
+
+
+
+
+                    <div class="d-grid gap-2">
+
+                        <button class="btn btn-success mt-2" type="submit">Insert</button>
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="col-md-8">
+                <h2>View Data</h2>
+                <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Publication_date</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+
+                    {% for d in data %}
+                      <tr>
+                        <th scope="row">{{d.id}}</th>
+                        <td>{{d.title</td>
+                        <td>{{d.author}}</td>
+                        <td>{{d.publication_date}}</td>
+                        <td>{{d.age}}</td>
+                        <td><a href="/update/{{d.id}}" type="button" class="btn btn-outline-warning">Edit</a></td>
+                        <td><a href="/delete/{{d.id}}" type="button" class="btn btn-outline-danger">Delete</a></td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+
+
+            </div>
+        </div>
+
+      </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+
+</html>
